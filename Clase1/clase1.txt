@@ -1,0 +1,23 @@
+1.	¿Cuál es la diferencia entre contenido de una variable y nombre de la misma?
+El contenido es el dato que se guarda y el nombre su identificador. 
+2.	¿Cuál es la diferencia entre una variable, una constante y un literal? ¿Qué tienen en común?
+Variable: reserva un espacio en memoria para un dato que se puede sobrescribir.
+Constante: reserva un espacio en memoria que no se puede sobrescribir.
+Literal: dato que se representa a sí mismo. 
+Los 3 ocupan espacio en memoria.
+3.	¿En qué consiste una expresión?
+La operación entre variables, constantes y operadores.
+4.	Complete los huecos
+•	Los operadores pueden ser utilizados en la construcción de ___expresiones_____, que devuelven un único valor.
+•	Las expresiones están presentes en casi todas las _sentencias_____
+•	El siguiente fragmento de código es un ejemplo de una expresión ______compuesta______.
+1 * 2 * 3
+•	Las sentencias para el intérprete son más o menos equivalentes a las ___oraciones ____ en el lenguaje natural para los humanos.
+1.	¿Qué elementos aparecen en una asignación?
+Nombre de la variable, operador de asignación y dato.
+2.	Haga, por favor, un seguimiento de las siguientes asignaciones, escribiendo el valor que va asumiendo la variable involucrada en cada asignación.
+X ← 0 x = 0
+X ← X + 4 x = 4
+X ← X + X – X * X = -8 
+X ← X % 4 = 0
+X ← (x + 4) / 2 = 2
