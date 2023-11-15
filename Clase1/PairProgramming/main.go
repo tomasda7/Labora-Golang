@@ -14,8 +14,8 @@ func main() {
 	var area int = longitud * anchura
 	var perimetro int = 2 * (longitud + anchura)
 
-	fmt.Printf("El area del recangulo es %d \n", area)
-	fmt.Printf("El perimetro del recangulo es %d", perimetro)
+	fmt.Printf("El area del rectangulo es %d \n", area)
+	fmt.Printf("El perimetro del rectangulo es %d", perimetro)
 }
 
 /*
