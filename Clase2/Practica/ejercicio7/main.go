@@ -9,7 +9,7 @@ func main() {
 	fmt.Println("Ingrese 2 numeros para obtener su maximo comun divisor:")
 	fmt.Scan(&a)
 	fmt.Scan(&b)
-	fmt.Printf("El cmd entre %d y %d es %d", a, b, mcd(a,b))
+	fmt.Printf("El mcd entre %d y %d es %d", a, b, mcd(a,b))
 }
 
 //Desarrollar un algoritmo para hallar el máximo común divisor (abreviado como mcd) entre dos números naturales. El máximo común divisor entre dos números es el mayor número que divide a ambos.
