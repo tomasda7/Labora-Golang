@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 /*
@@ -18,7 +19,7 @@ func main() {
 
 	fmt.Println("------------Main begins------------")
 
-	wg.Add(1)
+	wg.Add(2)
 	go evensSum(wg)
 	go oddsSum(wg)
 
@@ -29,26 +30,35 @@ func main() {
 
 
 func evensSum(wg *sync.WaitGroup) {
+
+	begins := time.Now()
+
 	var total int
-	for i := 0; i <= 1000; i++ {
+	for i := 0; i <= 10000000; i++ {
 		if i % 2 == 0 {
 			total += i
 		}
 	}
 
-	fmt.Println("evens sum wins")
+	end := time.Since(begins)
+
+	fmt.Println("evens sum ended in", end)
 	wg.Done()
 }
 
 func oddsSum(wg *sync.WaitGroup) {
 
+	begins := time.Now()
+
 	var total int
-	for i := 0; i <= 1000; i++ {
+	for i := 0; i <= 10000000; i++ {
 		if i % 2 != 0 {
 			total += i
 		}
 	}
 
-	fmt.Println("odds sum wins")
+	end := time.Since(begins)
+
+	fmt.Println("odds sum ended in", end)
 	wg.Done()
 }
