@@ -17,21 +17,34 @@ Para sincronizar se puede usar grupos de espera o canales. Preferentemente podé
 func main() {
 	channel := make(chan bool)
 
-	fmt.Println("------------Main begins------------")
+	var oddsTime time.Duration
+	var evensTime time.Duration
 
-	go oddsSum(&channel)
-	go evensSum(&channel)
+
+	go func ()  {
+		oddsTime = oddsSum(&channel)
+	}()
+
+	go func ()  {
+		evensTime = evensSum(&channel)
+	}()
 
 	<-channel
 	<-channel
+	close(channel)
 
-
-	fmt.Println("------------Main ends------------")
-
+	fmt.Println("-------- Final Results --------")
+	if oddsTime < evensTime {
+		fmt.Println("oddsSum Wins!")
+	} else if evensTime < oddsTime {
+		fmt.Println("evensSum Wins!")
+	} else {
+		fmt.Println("It is a tie!")
+	}
 }
 
 
-func evensSum(channel *chan bool) {
+func evensSum(channel *chan bool) time.Duration {
 	begin := time.Now()
 
 	var total int
@@ -44,9 +57,10 @@ func evensSum(channel *chan bool) {
 	end := time.Since(begin)
 	fmt.Println("evens sum ended in", end)
 	*channel <- true
+	return end
 }
 
-func oddsSum(channel *chan bool) {
+func oddsSum(channel *chan bool) time.Duration {
 	begin := time.Now()
 
 	var total int
@@ -59,4 +73,5 @@ func oddsSum(channel *chan bool) {
 	end := time.Since(begin)
 	fmt.Println("odds sum ended in", end)
 	*channel <- true
+	return end
 }

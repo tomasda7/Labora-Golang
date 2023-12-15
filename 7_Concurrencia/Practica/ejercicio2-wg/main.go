@@ -15,21 +15,33 @@ Para sincronizar se puede usar grupos de espera o canales. Preferentemente podé
 */
 
 func main() {
-	wg := &sync.WaitGroup{}
+	var wg sync.WaitGroup
 
-	fmt.Println("------------Main begins------------")
+	var evensTime time.Duration
+	var oddsTime time.Duration
 
 	wg.Add(2)
-	go evensSum(wg)
-	go oddsSum(wg)
+
+	go func ()  {
+		evensTime = evensSum(&wg)
+	}()
+	go func ()  {
+		oddsTime = oddsSum(&wg)
+	}()
 
 	wg.Wait()
-	fmt.Println("------------Main ends------------")
-
+	fmt.Println("-------- Final Results --------")
+	if oddsTime < evensTime {
+		fmt.Println("oddsSum Wins!")
+	} else if evensTime < oddsTime {
+		fmt.Println("evensSum Wins!")
+	} else {
+		fmt.Println("It is a tie!")
+	}
 }
 
 
-func evensSum(wg *sync.WaitGroup) {
+func evensSum(wg *sync.WaitGroup) time.Duration {
 
 	begins := time.Now()
 
@@ -44,9 +56,10 @@ func evensSum(wg *sync.WaitGroup) {
 
 	fmt.Println("evens sum ended in", end)
 	wg.Done()
+	return end
 }
 
-func oddsSum(wg *sync.WaitGroup) {
+func oddsSum(wg *sync.WaitGroup) time.Duration {
 
 	begins := time.Now()
 
@@ -61,4 +74,5 @@ func oddsSum(wg *sync.WaitGroup) {
 
 	fmt.Println("odds sum ended in", end)
 	wg.Done()
+	return end
 }
