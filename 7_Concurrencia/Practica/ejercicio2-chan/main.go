@@ -19,12 +19,12 @@ func main() {
 
 	fmt.Println("------------Main begins------------")
 
-	go evensSum(&channel)
 	go oddsSum(&channel)
+	go evensSum(&channel)
 
 	<-channel
 	<-channel
-	close(channel)
+
 
 	fmt.Println("------------Main ends------------")
 
@@ -32,7 +32,6 @@ func main() {
 
 
 func evensSum(channel *chan bool) {
-
 	begin := time.Now()
 
 	var total int
